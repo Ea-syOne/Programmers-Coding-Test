@@ -1,3 +1,9 @@
+/*
+로또 정답번호 win_nums와, 일부 숫자가 지워진 로또 번호 lottos를 인자로 받아 최소 순위와 최고 순위를 구하는 문제.
+win_nums와 lottos는 정렬되어 있지 않으며, 지워진 번호는 0으로 처리.
+로또 순위는 1 ~ 6위까지 있으며, 1위는 6개, 2위는 5개, ... , 6위는 1개 이하 일치할 경우를 의미.
+qsort와 bsearch를 이용해 빠른 탐색을 구현.
+*/
 #include <string>
 #include <vector>
 #include <stdlib.h>
