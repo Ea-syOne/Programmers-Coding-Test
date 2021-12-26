@@ -1,0 +1,68 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int isDigit(char c)
+{
+    return (c >= '0' && c <= '9');
+}
+
+char toDigit(string s, int* len)
+{
+    switch (s[0])
+    {
+      case 'o':
+        *len = 3;
+        return '1';
+      case 't':
+        if(s[1] == 'w')
+        {
+          *len = 3;
+          return '2';
+        }
+        *len = 5;
+        return '3';
+      case 'f':
+        *len = 4;
+        if(s[1] == 'o') return '4';
+        else return '5';
+      case 's':
+        if(s[1] == 'i')
+        {
+          *len = 3;
+          return '6';
+        }
+        *len = 5;
+        return '7';
+      case 'e':
+        *len = 5;
+        return '8';
+      case 'n':
+        *len = 4;
+        return '9';
+      case 'z':
+        *len = 4;
+        return '0';
+      default:
+        *len = 1;
+        return ' ';
+    }
+}
+
+int solution(string s) {
+    int idx, len;
+    char c;
+    string sub;
+    idx = s.find_first_not_of("0123456789");
+    while (idx != string::npos)
+    {
+        sub = s.substr(idx, 2);
+        c = toDigit(sub, &len);
+        s.replace(idx, len, 1, c);
+        idx = s.find_first_not_of("0123456789", idx+1);
+    }
+    
+    int answer = stoi(s);
+    return answer;
+}
